@@ -43,17 +43,17 @@ init();
 
 function init() {
   // TODO 4c-2: initialize the snake
-// initialize the snake's body as an empty Array
-snake.body = [];
+  // initialize the snake's body as an empty Array
+  snake.body = [];
 
-// make the first snakeSquare and set it as the head
-makeSnakeSquare(10, 10);
-snake.head = snake.body[0];
+  // make the first snakeSquare and set it as the head
+  makeSnakeSquare(10, 10);
+  snake.head = snake.body[0];
   // TODO 4b-2: initialize the apple
-makeApple();
+  makeApple();
   // TODO 5a: Initialize the interval
-// start update interval
-updateInterval = setInterval(update, 100);
+  // start update interval
+  updateInterval = setInterval(update, 100);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -96,7 +96,7 @@ function checkForNewDirection(event) {
 
   // FILL IN THE REST
 
-   // console.log(snake.head.direction);  
+  // console.log(snake.head.direction);
 }
 
 function moveSnake() {
@@ -139,11 +139,16 @@ function hasHitWall() {
   
   HINT: What will the row and column of the snake's head be if this were the case?
   */
- if (12 < snake.head.column && snake.head.column < 0 && 12 < snake.head.row && snake.head.row < 0) {
-  return true;
- } else {
-  return false;
- }
+  if (
+    COLUMNS < snake.head.column ||
+    snake.head.column < 0 ||
+    ROWS < snake.head.row ||
+    snake.head.row < 0
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function hasCollidedWithApple() {
@@ -154,7 +159,11 @@ function hasCollidedWithApple() {
   HINT: Both the apple and the snake's head are aware of their own row and column
   */
 
-  return false;
+  if (apple.row === snake.head.row && apple.column === snake.head.column) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function handleAppleCollision() {
@@ -276,7 +285,6 @@ function makeSnakeSquare(row, column) {
 function handleKeyDown(event) {
   // TODO 6a: make the handleKeyDown function register which key is pressed
   activeKey = event.which;
-console.log(activeKey);
 }
 
 /* Given a gameSquare (which may be a snakeSquare or the apple), position
