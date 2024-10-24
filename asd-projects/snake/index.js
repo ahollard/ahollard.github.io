@@ -232,8 +232,6 @@ function hasCollidedWithSnake() {
   for (var i = 2; i < snake.body.length; i++) {
     if (snake.head.row === snake.body[i].row && snake.head.column === snake.body[i].column) {
       return true;
-    } else {
-      return false;
     }
   }
   return false;
@@ -318,7 +316,18 @@ function makeSnakeSquare(row, column) {
 */
 function handleKeyDown(event) {
   // TODO 6a: make the handleKeyDown function register which key is pressed
-  activeKey = event.which;
+  if (activeKey === 37 && event.which !== 39){
+    activeKey = event.which;
+  } else if (activeKey === 39 && event.which !== 37) {
+    activeKey = event.which;
+  } else if (activeKey === 38 && event.which !== 40) {
+    activeKey = event.which;
+  } else if (activeKey === 40 && event.which !== 38) {
+    activeKey = event.which;
+  } else {
+    event.which = event.which;
+  }
+  
 }
 
 /* Given a gameSquare (which may be a snakeSquare or the apple), position
@@ -344,6 +353,11 @@ function getRandomAvailablePosition() {
 
   /* Generate random positions until one is found that doesn't overlap with the snake */
   while (!spaceIsAvailable) {
+    for (let i = 0; i < snake.body.length; i++) {
+      if (snake.body[i].column === randomPosition.column && snake.body[i].row === randomPosition.row) {
+        spaceIsAvailable = false;
+      }
+    }
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
     spaceIsAvailable = true;
@@ -353,6 +367,7 @@ function getRandomAvailablePosition() {
     not occupied by a snakeSquare in the snake's body. If it is then set 
     spaceIsAvailable to false so that a new position is generated.
     */
+   
   }
 
   return randomPosition;
