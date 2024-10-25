@@ -31,6 +31,7 @@ var updateInterval;
 // variable to keep track of the key (keycode) last pressed by the user
 var activeKey;
 
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////// GAME SETUP //////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -316,6 +317,11 @@ function makeSnakeSquare(row, column) {
 */
 function handleKeyDown(event) {
   // TODO 6a: make the handleKeyDown function register which key is pressed
+  if (!activeKey) {
+    activeKey = event.which;
+    return;
+  }
+
   if (activeKey === 37 && event.which !== 39){
     activeKey = event.which;
   } else if (activeKey === 39 && event.which !== 37) {
@@ -325,7 +331,7 @@ function handleKeyDown(event) {
   } else if (activeKey === 40 && event.which !== 38) {
     activeKey = event.which;
   } else {
-    event.which = event.which;
+    return;
   }
   
 }
