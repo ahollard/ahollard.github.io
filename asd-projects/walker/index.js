@@ -43,6 +43,7 @@ function runProgram() {
   function newFrame() {
     updateSpeed();
     repositionGameItem();
+    wallCollision();
     redrawGameItem();
   }
 
@@ -108,6 +109,28 @@ function runProgram() {
         walker.accelerationY = 0;
         walker.speedY = 0;
       }
+    }
+  }
+
+  function wallCollision(event) {
+    if (walker.X >= $("#board").width && event.which === KEY.RIGHT()) {
+      walker.accelerationX = 0;
+      walker.speedX = 0;
+    }
+    
+    if (walker.X < 0 && event.which === KEY.LEFT) {
+      walker.accelerationX = 0;
+      walker.speedX = 0;
+    }
+
+    if (walker.Y >= $("#board" && event.which === KEY.DOWN).width()) {
+      walker.accelerationY = 0;
+      walker.speedY = 0;
+    }
+
+    if (walker.Y < 0 && event.which === KEY.UP) {
+      walker.accelerationY = 0;
+      walker.speedY = 0;
     }
   }
   function endGame() {
