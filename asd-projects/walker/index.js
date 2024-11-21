@@ -111,28 +111,35 @@ function runProgram() {
       }
     }
   }
-
-  function wallCollision(event) {
-    if (walker.X >= $("#board").width && event.which === KEY.RIGHT()) {
+var xBoundary = $("#board").height() - $("#walker").height();
+var yBoundary = $("#board").width() - $("#walker").width()
+  function wallCollision() {
+    if (walker.X >= xBoundary) {
       walker.accelerationX = 0;
       walker.speedX = 0;
+      walker.X = xBoundary;
     }
     
-    if (walker.X < 0 && event.which === KEY.LEFT) {
+    if (walker.X < 0) {
       walker.accelerationX = 0;
       walker.speedX = 0;
+      walker.X = 0;
     }
 
-    if (walker.Y >= $("#board" && event.which === KEY.DOWN).width()) {
+    if (walker.Y >= yBoundary) {
       walker.accelerationY = 0;
       walker.speedY = 0;
+      walker.Y = yBoundary;
     }
 
-    if (walker.Y < 0 && event.which === KEY.UP) {
+    if (walker.Y < 0) {
       walker.accelerationY = 0;
       walker.speedY = 0;
+      walker.Y = 0;
     }
   }
+  console.log($("#walker").width())
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
