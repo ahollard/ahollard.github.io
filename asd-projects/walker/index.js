@@ -65,13 +65,13 @@ function runProgram() {
   }
 
   function handleKeyUp(event) {
-    if (event.which === KEY.LEFT) {
+    if (event.which === KEY.LEFT && walker.speedX !== 0) {
       walker.accelerationX = 0.05;
-    } else if (event.which === KEY.UP) {
+    } else if (event.which === KEY.UP && walker.speedY !== 0) {
       walker.accelerationY = 0.05;
-    } else if (event.which === KEY.RIGHT) {
+    } else if (event.which === KEY.RIGHT && walker.speedX !== 0) {
       walker.accelerationX = -0.05;
-    } else if (event.which === KEY.DOWN) {
+    } else if (event.which === KEY.DOWN && walker.speedY !== 0) {
       walker.accelerationY = -0.05;
     }
   }
@@ -98,6 +98,7 @@ function runProgram() {
 
     var newXSign = Math.sign(walker.speedX);
     var newYSign = Math.sign(walker.speedY);
+
     if (originalXSign !== 0) {
       if (originalXSign !== newXSign) {
         walker.accelerationX = 0;
@@ -111,8 +112,10 @@ function runProgram() {
       }
     }
   }
+
 var xBoundary = $("#board").height() - $("#walker").height();
 var yBoundary = $("#board").width() - $("#walker").width()
+
   function wallCollision() {
     if (walker.X >= xBoundary) {
       walker.accelerationX = 0;
