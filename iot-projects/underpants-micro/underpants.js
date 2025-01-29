@@ -3,7 +3,9 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
-var _ = {};
+var _ = {
+
+};
 
 
 /**
@@ -21,6 +23,9 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity = function(value) {
+    return value;
+}
 
 
 /** _.indexOf
@@ -75,7 +80,7 @@ var _ = {};
 * Arguments:
 *   1) An array
 *   2) A function
-* Objectives:
+0* Objectives:
 *   1) call <function> for each element in <array> passing the arguments:
 *      the element, it's index, <array>
 *   2) return a new array of elements for which calling <function> returned true
