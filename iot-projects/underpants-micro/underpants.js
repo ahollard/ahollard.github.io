@@ -42,7 +42,14 @@ _.identity = function(value) {
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, value) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 
 /** _.contains
@@ -59,7 +66,14 @@ _.identity = function(value) {
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
-
+_.contains = function(array, value) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+            return true;
+        }
+    }
+    return false;
+}
 
 /** _.each
 * Arguments:
@@ -74,7 +88,13 @@ _.identity = function(value) {
 *      -> should log "a" "b" "c" to the console
 */
 
-
+_.each = function(collection, func) {
+    if (Array.isArray(collection)) {
+        for (let i = 0; i < collection.length; i++) {
+            func(collection[i], i, collection);
+        }
+    }
+}
 
 /** _.filter
 * Arguments:
@@ -92,6 +112,15 @@ _.identity = function(value) {
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func) {
+    var newArray = [];
+        for (let i = 0; i < array.length; i++) {
+         if (func(array[i], i, array)) {
+            newArray.push(array[i]);
+         }
+        }
+    return newArray;
+}
 
 
 /** _.reject
@@ -107,7 +136,16 @@ _.identity = function(value) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
-
+_.reject = function (array, func) {
+    var newArray = [];
+    for (let i = 0; i < array.length; i++) {
+        if (func(array[i], i, array) === false) {
+            newArray.push(array[i]);
+        }
+        
+    }
+    return newArray
+}
 
 /** _.map
 * Arguments:
@@ -123,7 +161,15 @@ _.identity = function(value) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
-
+_.map = function(collection, func) {
+    var newArray = [];
+    if (Array.isArray(collection)) {
+        for (let i = 0; i < collection.length; i++) {
+            newArray.push(func(collection[i], i, collection))
+        }
+    }
+    return newArray
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
