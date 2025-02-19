@@ -1,11 +1,12 @@
 // fetchServer.js file
-var args = process.argv.slice(2);
+
 const http = require("http");
 var port = 7777;
 
 http.createServer(async function (req, res) {
+    var args = process.argv.slice(2);
     var url = args[0] ? args[0] : "https://ahollard.github.io";
-    res.writeHead(200, { "Content-Type": "text.html"});
+    res.writeHead(200, { "Content-Type": args[1]});
     var fetchResponse = await fetch(url);
     if (fetchResponse.ok) {
         const html = await fetchResponse.text();

@@ -1,7 +1,10 @@
 const http = require("http");
 const async = require("async");
 
-const port = 8686;
+const port = 8888;
+
+let d = new Date();
+let startTime = d.getTime();
 
 http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -9,7 +12,12 @@ http.createServer(function(req, res) {
     let racers = ["Green Ambler", "Catalack", "Steel Runner", "G.I. Jogger"];
 
     // TODO 7: Get the start time for the race
-    
+    function wrapper(callback) {
+        setTimeout(function () {
+            let d = new Date();
+            callback(null, d.getTime())
+        }, Math.random() * 1000)
+    }
 
     // TODO 12: Make the whole thing parallel
     async.series( 
