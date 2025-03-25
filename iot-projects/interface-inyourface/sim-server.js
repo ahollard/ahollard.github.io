@@ -50,9 +50,10 @@ const wss = new WebSocket.Server({ server });
   wss.on("connection", function (socket){
     setInterval(function () {
       if (socket.readyState === WebSocket.OPEN) {
-        socket.send(temperature.JSON)
+        console.log(temperature.JSON)
+        socket.send(JSON.stringify({ value: temperature }))
       }
-    }, 1000)
+    }, 7500)
   })
 
 
