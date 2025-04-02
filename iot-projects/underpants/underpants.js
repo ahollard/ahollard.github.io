@@ -253,6 +253,20 @@ _.contains = function(arr, value) {
 }
 */
 
+_.partition = function (arr, func) {
+    var arr2 = [];
+    var arr3 = [];
+    for(let i = 0; i < arr.length; i++) {
+        func(arr[i], i, arr) 
+        if (func(arr[i], i, arr) === true) {
+            arr2.push(arr[i]);
+        } else if (arr[i], i, arr === false) {
+            arr3.push(arr[i]);
+        }
+        arr[0] = arr2;
+        arr[1] = arr3;
+    }
+}
 
 /** _.map
 * Arguments:
