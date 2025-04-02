@@ -165,12 +165,7 @@ _.indexOf = function(arr, value) {
 */
 
 _.contains = function(arr, value) {
-    // for(let i = 0; i < arr.length; i++) {
-        return _.indexOf(arr, value) === -1 ? false : true;
-        // if (arr[i] === value) {
-        //     return true;
-        // } 
-    // }
+    return _.indexOf(arr, value) === -1 ? false : true;
 }
 
 
@@ -191,6 +186,17 @@ _.contains = function(arr, value) {
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(collection, func) {
+    if (_.typeOf(collection) === "array") {
+        for (let i = 0; i < collection.length; i++) {
+            func(collection[i], i, collection)
+        }
+    } else if (_.typeOf(collection) === "object") {
+        for (const property in collection) {
+            func(collection[property], property, collection)
+        }
+    }
+}
 
 /** _.unique
 * Arguments:
@@ -202,6 +208,18 @@ _.contains = function(arr, value) {
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function(arr) {
+    var arr2 = [];
+    for (let i = 0; i < arr.length; i++) {
+        
+        if (_.indexOf(arr, arr[i]) === i) {
+            arr2.push(arr[i]);
+        }
+
+    }
+    return arr2;
+   
+}
 
 /** _.filter
 * Arguments:
@@ -219,6 +237,15 @@ _.contains = function(arr, value) {
 *   use _.each in your implementation
 */
 
+_.filter = function(arr, func) {
+    var arr2 = [];
+    for (let i = 0; i < arr.length; i++) {
+        if(func(arr[i], i, arr) === true) {
+            arr2.push(arr[i])
+        }
+    }
+    return arr2;
+}
 
 /** _.reject
 * Arguments:
@@ -233,6 +260,15 @@ _.contains = function(arr, value) {
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
 
+_.reject = function(arr, func) {
+    var arr2 = [];
+    for (let i = 0; i < arr.length; i++) {
+        if(func(arr[i], i, arr) === false) {
+            arr2.push(arr[i]);
+        }
+    }
+    return arr2;
+}
 
 /** _.partition
 * Arguments:
