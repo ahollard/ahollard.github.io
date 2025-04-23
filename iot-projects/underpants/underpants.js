@@ -289,6 +289,19 @@ _.reject = function(arr, func) {
 }
 */
 
+_.partition = function(arr, func) {
+    var arr2 = [];
+    var arr3 = [];
+    var arr4 = [arr2, arr3];
+    for(let i = 0; i < arr.length; i++) {
+        if(func(arr[i], i, arr) === true) {
+            arr2.push(arr[i])
+        } else if (func(arr[i], i, arr) === false) {
+            arr3.push(arr[i])
+        }
+    }
+    return arr4;
+}
 
 /** _.map
 * Arguments:
@@ -306,6 +319,20 @@ _.reject = function(arr, func) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, func) {
+    arr = [];
+    for(let i = 0; i < collection.length; i++) {
+        if (_.typeOf(collection) === "array") {
+            func(collection[i], i, collection);
+        }
+        if (_.typeOf(collection) === "object") {
+            for (const property in collection) {
+                func(collection[property], property, collection);
+            }
+        }
+    }
+    
+}
 
 /** _.pluck
 * Arguments:
