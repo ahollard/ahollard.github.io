@@ -8,7 +8,7 @@
   const stage = new createjs.Stage(canvas);
 
   // TODO 6: Set the framerate of the Ticker
-  createjs.Ticker.framerate = 360;
+  createjs.Ticker.framerate = 60;
 
 
   /*
@@ -25,7 +25,7 @@
 const bg = new createjs.Shape();
 
     console.log(bg);
-    bg.graphics.beginFill("rgba(168, 59, 59, 1)").drawCircle(250, 250, 275)
+    bg.graphics.beginFill("rgba(251, 238, 238, 1)").drawCircle(250, 250, 275)
 
   // CREATE A CIRCLE //
   
@@ -34,15 +34,21 @@ const bg = new createjs.Shape();
   eyeContainer.y = 100
   const leftEye = new createjs.Shape();
   const rightEye = new createjs.Shape();
+  const mouth1 = new createjs.Shape();
+  const mouth2 = new createjs.Shape();
+  const nose1 = new createjs.Shape();
 
-  leftEye.graphics.beginFill("blue").drawRect(20, 20, 60, 10);
-
-  rightEye.graphics.beginFill("#FFBF00").drawCircle(150, 20, 25);
-  
-
-
+  leftEye.graphics.beginFill("red").drawCircle(-10, 10, 25); // x, y, radius
+  leftEye.graphics.beginFill("black").drawCircle(-10, 10, 2.5);
+  rightEye.graphics.beginFill("red").drawCircle(100, 10, 25);
+  rightEye.graphics.beginFill("black").drawCircle(100, 10, 2.5);
+  mouth1.graphics.beginFill("red").drawCircle(100, 200, 150);
+  mouth2.graphics.beginFill("rgba(251, 238, 238, 1)").drawCircle(100, 170, 150);
+  nose1.graphics.beginFill("red").drawCircle(100, 150, 10)
+  rightEye.scaleX = 2
+  leftEye.scaleX = 2
   // ADD DISPLAY OBJECTS TO STAGE //
-  eyeContainer.addChild(leftEye, rightEye);
+  eyeContainer.addChild(leftEye, rightEye, mouth1, mouth2, nose1);
 stage.addChild(bg, eyeContainer);
 
 
@@ -62,16 +68,23 @@ stage.update();
    * TODO 10: Implement an update Function, after making 
    * changes to assets, it must call stage.update(); 
    */
-  
+  var leftEyeSpeed = 1.5;
+  var rightEyeSpeed = 1.5;
+  var mouth2Speed = 3;
   function update(event) {
-    if (leftEye.x < 10 || leftEye.x > canvas.width - 10) {
-      leftEye.x = -leftEye.x
+    if (leftEye.x < 0 || leftEye.x > 10) {
+      leftEyeSpeed = -leftEyeSpeed * 1.001
     }
-    if (rightEye.x < 10 || rightEye.x > canvas.width - 10) {
-      rightEye.x = -rightEye.x
+    if (rightEye.x < 0 || rightEye.x > 10) {
+      rightEyeSpeed = -rightEyeSpeed * 1.001
     }
-    leftEye.x++
-    rightEye.x--
+    if (mouth2.y < 0 || mouth2.y > 20) {
+      mouth2Speed = -mouth2Speed 
+    }
+    leftEye.x += leftEyeSpeed
+    rightEye.x += rightEyeSpeed
+    mouth2.y += mouth2Speed
+    console.log(leftEye.x)
 
     stage.update();
   }
