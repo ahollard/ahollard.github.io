@@ -1,7 +1,7 @@
 // TODO 4: Add a parameter for your gaming library in the index.js module:
-(function(window, createjs, opspark) {
+(function(window, createjs, opspark, WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE) {
   // OUR MODULE CODE GOES BELOW HERE //
-
+  console.log(WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE);
   console.log('index.js initialized!');
   
   /*
@@ -23,7 +23,7 @@
 
   
   // TODO 4.5: import your getDistance function here
-
+ var calculateDistance = WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE.numz.calculateDistance
     
     
   const radius = 25; // the radius of our two circles
@@ -59,15 +59,20 @@
      * TODO 5: use getDistance to calculate the distance between shapeUp and 
      * the mouse. Store the result in a variable called distance:
      */
-    
+    var mouse = {
+      x: stage.mouseX,
+      y: stage.mouseY
+    }
+    var distance = calculateDistance(shapeUp, mouse)
     
     
     /*
      * TODO 6: Check if the mouse is within the area of shapeUp, and set the 
      * alpha property of shapeUp accordingly:
      */
-    
-    
+    shapeUp.alpha = distance < 25 ? 0 : 1;
+    shapeOver.alpha = distance < 25 ? 1 : 0;
+  
     /*
      * Update the textfield with the current distance between the mouse and 
      *the edge of the shapeUp
@@ -94,4 +99,4 @@
   // OUR MODULE CODE GOES ABOVE HERE //
   
 // TODO 3: Pass your gaming library into the index.js module:
-}(window, window.createjs, window.opspark));
+}(window, window.createjs, window.opspark, window.WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE));

@@ -1,0 +1,28 @@
+{
+  "name": "WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE",
+  "main": "index.js",
+  "homepage": "https://github.com/ahollard/WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE",
+  "description": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "version": "0.1.0",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "84476313574a3e96b18a4eb6ba1f8692e53453d0"
+  },
+  "_source": "https://github.com/ahollard/WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE.git",
+  "_target": "^0.1.0",
+  "_originalSource": "https://github.com/ahollard/WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE.git",
+  "_direct": true
+}
