@@ -47,7 +47,11 @@ ship.y = canvas.height/2;
     // TODO 8: Set the ship's rotation property to the degrees //
       ship.rotation = degrees
     
-    
+    if (degrees < 0) {
+      degrees = -degrees
+    } else {
+      degrees = 360 - degrees
+    }
     /*
      * TODO 9: Uncomment the line below to update the textfield  
      * with the current angle degrees. Degrees will be a value 
