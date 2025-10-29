@@ -1,5 +1,5 @@
 // TODO 4: Change *my-game-lib* to the name of your game lib
-(function(window, opspark, *my-game-lib*) {
+(function(window, opspark, WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE) {
   const
     engine = opspark.V6().activateResize(),
     canvas = engine.getCanvas(),
@@ -34,8 +34,8 @@
      * is available to you in this scope as, "this".
      * 2. What are the x and y forces acting on our ship?
      */
-    
-    
+    console.log(this);
+   WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE.phyz.updateVelocity(this, this.propulsion, this.propulsion)
     
     // also check if the ship needs to rebound off a boundary //
     reboundCircularAssetInArea(this, canvas);
@@ -111,4 +111,4 @@
   }
   
   // TODO 3: replace *my-game-lib* with the name of your game lib //
-}(window, window.opspark, window.*my-game-lib*));
+}(window, window.opspark, window.WIDBDDHTHIEWIDBDDHTHIEWIHTITCDHTHDSSIGWSWTRIIMBAE));
