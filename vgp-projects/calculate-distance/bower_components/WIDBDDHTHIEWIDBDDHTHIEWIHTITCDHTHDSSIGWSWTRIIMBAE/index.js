@@ -50,11 +50,7 @@
             },
           };
         },
-        updateVelocity(body, foupdatePosition(body) {
-  body.x += body.velocityX;
-  body.y += body.velocityY;
-  body.rotation += body.rotationalVelocity;
-},rceOnX, forceOnY) {
+        updateVelocity(body, forceOnX, forceOnY) {
           const angle = (body.rotation * Math.PI) / 180,
             accelerationOnX = Math.cos(angle) * forceOnX,
             accelerationOnY = Math.sin(angle) * forceOnY;
