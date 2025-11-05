@@ -7,7 +7,7 @@
   opspark.space = function(messenger) {
     // holds all bodies active in our space //
     const 
-      dampeningForce = 0.08,
+      dampeningForce = 0.06,
       active = [];
 
     messenger.on('SPAWN', onSpawn);
@@ -50,26 +50,39 @@
             
             // TODO 1: Calculate hit test components
             
+            var distanceX = bodyA.x - bodyB.x 
+            var distanceY = bodyA.y - bodyB.y
+            var distance = (distanceX*distanceX + distanceY*distanceY)**(1/2)
+            var minimumDistance = distance - (bodyA.radius + bodyB.radius);
+
             
               
             // TODO 2: Do collision check: how do we know if bodies are colliding?
-            if(/* replace with collision check */ false) {
-              // console.log('hit!');
+            if(minimumDistance < 0) {
+              console.log('hit!');
               
               // TODO 3: Calculate springToX and springToY 
-              
+              var angle = Math.atan2(distanceY, distanceX)
+              var lengthX = Math.cos(angle) * minimumDistance
+              var springToX = lengthX + bodyA.x
+              var lengthY = Math.sin(angle) * minimumDistance
+              var springToY = lengthY + bodyA.y
               
                 
               // TODO 4: Calculate acceleration to spring-to point, factor in dampeningForce
-              
+              var accelerationOnX = (bodyB.x - springToX) * dampeningForce
+              var accelerationOnY = (bodyB.y - springToY) * dampeningForce
               
               
               // TODO 5: Apply acceleration to bodyB
+              bodyB.velocityX += accelerationOnX
+              bodyB.velocityY += accelerationOnY
               
               
               
               // TODO 6: Apply inverse acceleration to bodyA
-              
+              bodyA.velocityX -= accelerationOnX
+              bodyA.velocityY -= accelerationOnY
               
               
             }
