@@ -25,19 +25,22 @@
           level)
           .spawn(),
           
-        shipTwo = opspark.playa.ship(
-          assets, 
-          controls, 
-          messenger, 
-          opspark.playa.projectile(fx, assets, messenger),
-          fx.makePlayerEmitter(), 
-          level)
-          .setKeyMap({ UP: controls.KEYS.W, LEFT: controls.KEYS.A, RIGHT: controls.KEYS.D, FIRE: controls.KEYS.SHIFT_LEFT })
-          .spawn('#f44242'),
+        // shipTwo = opspark.playa.ship(
+        //   assets, 
+        //   controls, 
+        //   messenger, 
+        //   opspark.playa.projectile(fx, assets, messenger),
+        //   fx.makePlayerEmitter(), 
+        //   level)
+        //   .setKeyMap({ UP: controls.KEYS.W, LEFT: controls.KEYS.A, RIGHT: controls.KEYS.D, FIRE: controls.KEYS.SHIFT_LEFT })
+        //   .spawn('#f44242'),
           
         orb = opspark.playa.orb(assets, fx, messenger)
-          .spawn(25);
+          .spawn(1);
       
+          const powerup1 = opspark.playa.wip(assets, fx, messenger)
+          .spawn(1);
+
       game.view.addChild(view.container);
       
       // event handlers here //
@@ -90,7 +93,7 @@
             controls.activate();
             hud.activate();
 
-            game.addUpdateable(fx, ship, shipTwo, space);
+            game.addUpdateable(fx, ship, space);
             
             // orbManager.on('EXPLOSION', onOrbExplosion);
             messenger.on('EXPLOSION', onExplosion);

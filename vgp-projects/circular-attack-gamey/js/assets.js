@@ -85,7 +85,8 @@
           // reset the radius, other non-radii drawing operations have overwritten it //
           ship.radius = radius + 3;
           ship.color = color;
-
+          ship.powerup1Count = 0;
+          
           // rasterize the vector graphic, basically creating a bitmap //
           ship.snapToPixel = true;
           ship.cache(-radius - 10, -radius - 10, radius * 2 + 15, radius * 2 + 15);
@@ -147,6 +148,25 @@
           // orb.cache(-rad, -rad, rad * 2, rad * 2);
           
           return orb;
+        },
+         makeWip() {
+          const wip = draw.randomCircleInArea(canvas, false, true, '#999', 2);
+          // console.log(`rad: ${orb.radius}`);
+          // console.log(`den: ${orb.radius / 20 * 0.5}`);
+          Object.assign(wip, phyz.makeBody('wip', { 
+            density: wip.radius / 20 * 0.5,
+            volatility: wip.radius * 0.0001,
+          }));
+          phyz.addRandomVelocity(wip, canvas);
+          wip.update = updateOrb;
+          
+          // TODO: why is caching killing the cross on the orb?
+          // rasterize the vector graphic, basically creating a bitmap //
+          // orb.snapToPixel = true;
+          // const rad = orb.radius + 2;
+          // orb.cache(-rad, -rad, rad * 2, rad * 2);
+          
+          return wip;
         },
         centerOnStage,
       };
