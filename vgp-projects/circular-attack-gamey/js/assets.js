@@ -150,7 +150,9 @@
           return orb;
         },
          makeWip() {
-          const wip = draw.randomCircleInArea(canvas, false, true, '#999', 2);
+          var radius = 20
+          var color = "#5EBABF"
+          const wip = draw.polyStar(radius, 1000, 3, 0, color, null, null, null, null);
           // console.log(`rad: ${orb.radius}`);
           // console.log(`den: ${orb.radius / 20 * 0.5}`);
           Object.assign(wip, phyz.makeBody('wip', { 
@@ -159,7 +161,10 @@
           }));
           phyz.addRandomVelocity(wip, canvas);
           wip.update = updateOrb;
-          
+                    wip.x = numz.randomIntBetween(0, canvas.width);
+
+                    wip.y = numz.randomIntBetween(0, canvas.height);
+
           // TODO: why is caching killing the cross on the orb?
           // rasterize the vector graphic, basically creating a bitmap //
           // orb.snapToPixel = true;

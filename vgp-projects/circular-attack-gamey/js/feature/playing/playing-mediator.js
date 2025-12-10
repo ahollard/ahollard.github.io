@@ -5,6 +5,7 @@
      * Creates and returns the playing mediator.
      */
     function(view, game, data) {
+      let numberOfOrbs = 23;
       const
         level = data.levels[data.currentLevel],
         canvas = game.canvas,
@@ -36,7 +37,7 @@
         //   .spawn('#f44242'),
           
         orb = opspark.playa.orb(assets, fx, messenger)
-          .spawn(1);
+          .spawn(numberOfOrbs);
       
           const powerup1 = opspark.playa.wip(assets, fx, messenger)
           .spawn(1);
@@ -52,7 +53,16 @@
             setTimeout(() => game.end({message: "GAME OVER"}), 2000);
             break;
           case 'orb':
-            if(orb.getNumberActive() < 1) {
+            numberOfOrbs --;
+            console.log({numberOfOrbs});
+            if(numberOfOrbs < 20) {
+              setTimeout(() => {
+                opspark.playa.orb(assets, fx, messenger).spawn(30)
+                
+              }, 5000);
+              numberOfOrbs += 30;
+            }
+            if(numberOfOrbs < 1) {
               messenger.off('EXPLOSION', onExplosion);
               setTimeout(() => game.end({message: "HOT THING"}), 2000);
             }
@@ -108,7 +118,7 @@
             controls.deactivate();
             hud.deactivate();
             
-            game.removeUpdateable(space, ship, shipTwo, fx);
+            game.removeUpdateable(space, ship, fx);
             game.stage.enableMouseOver(20);
             resove();
           });

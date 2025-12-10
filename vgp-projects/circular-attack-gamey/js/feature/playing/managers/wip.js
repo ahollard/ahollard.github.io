@@ -57,19 +57,24 @@
         wip.handleCollision = handleCollision;
         return wip;
       }
-      
+  
       function handleCollision(impact, body) {
         // don't handle collisions between wips //
         if (body.type === this.type) return;
-
+        if (body.type === "ship") {
+          this.integrity = 0;
+          setTimeout(() => { 
+          const powerup1 = opspark.playa.wip(assets, fx, messenger)
+          .spawn(1);
+          }, 1000);
+        }
         /*
          * Because the explosion is async, the wip may exist
          * but have already exploded, so check first to see 
          * if it has integrity before running check to exlode.
          */
-        if (this.integrity > 0) {
+        if (this.integrity >= 0) {
           console.log(impact);
-          this.integrity -= impact;
           if (this.integrity <= 0) {
             fx
               .makeEmitter(2, 3, "rgba(214, 36, 84, 0.2)", null, [
