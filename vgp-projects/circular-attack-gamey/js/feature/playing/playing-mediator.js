@@ -5,7 +5,7 @@
      * Creates and returns the playing mediator.
      */
     function(view, game, data) {
-      let numberOfOrbs = 23;
+      let numberOfOrbs = 25;
       const
         level = data.levels[data.currentLevel],
         canvas = game.canvas,
